@@ -4,10 +4,14 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router } from 'react-router-dom';
 import {Container, Dimmer, Loader } from 'semantic-ui-react';
 import People from './components/People';
+import Pagination from './components/Pagination';
 
 function App() {
   const [people, setPeople] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [peoplePerPage] = useState(6);
 
   useEffect(() =>{
     async function fetchPeople() {
@@ -19,6 +23,13 @@ function App() {
 
     fetchPeople();
   }, []);
+
+  const indexOfLastPeople = currentPage * peoplePerPage;
+  const indexOfFirstPeople = indexOfLastPeople - peoplePerPage;
+  const currentPeople = people.slice(indexOfFirstPeople, indexOfLastPeople);
+
+  const paginate = pageNumber => setCurrentPage(pageNumber);
+
   return (
     <div>
       <Router>
@@ -31,8 +42,12 @@ function App() {
               </Dimmer>
             ) : (
               <Router exact path='/characters'>
-                <People data={people}/>
-                 
+                <People data={currentPeople}/>
+              <Pagination  
+                    peoplePerPage={peoplePerPage}
+                    totalPeople={people.length}
+                    paginate={paginate}  
+                  />    
               </Router>
             )}
           
