@@ -41,7 +41,7 @@ function App() {
                 <Loader>Loading</Loader>
               </Dimmer>
             ) : (
-              <Router exact path='/characters'>
+              <Router exact path='/people'>
                 <People data={currentPeople}/>
               <Pagination  
                     peoplePerPage={peoplePerPage}

@@ -10,7 +10,7 @@ export default function People({data, loading}) {
     return (
         <div>
             <h1 align='center'>Star Wars Characters</h1>
-            <Grid columns={2}>
+            <Grid align='center' columns={2}>
                 {data.map((people, i) => {
                     return (
                         <Grid.Column key={i}>

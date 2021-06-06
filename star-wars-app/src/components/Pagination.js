@@ -11,7 +11,7 @@ const Pagination = ({peoplePerPage, totalPeople, paginate}) => {
     return (
         <nav>
             <p></p>
-            <ul class="pagination pg-blue justify-content-left">
+            <ul class="pagination pg-blue justify-content-center">
                 <li class="page-item disabled">
                 <a href='!#' class="page-link" tabindex="-1">Previous</a>
                 </li>
